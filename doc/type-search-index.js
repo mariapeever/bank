@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"uk.ac.gold","l":"Account"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"uk.ac.gold","l":"Bank"},{"p":"uk.ac.gold","l":"CurrentAccount"},{"p":"uk.ac.gold","l":"SavingAccount"}]
