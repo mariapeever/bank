@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author mpeev001
  *
  */
-public class SavingAccount extends Account {
+class SavingAccount extends Account {
 	
 	// Constructor
 	
@@ -20,7 +20,7 @@ public class SavingAccount extends Account {
 	 * @param accountID The account ID.
 	 * @param balance Account balance.
 	 */
-	public SavingAccount(String accountID, double balance) { // Create a new savings account with the specified account ID and balance
+	SavingAccount(String accountID, double balance) { // Create a new savings account with the specified account ID and balance
 		super(accountID, balance); // call Account (super) constructor
 		ArrayList<Account> accounts = Bank.getListOfAccounts(); // create to a copy of the bank's list of accounts
 		
@@ -52,7 +52,7 @@ public class SavingAccount extends Account {
 	 * @return <code>true</code> if withdrawal is successful; <code>false</code> if there are insufficient funds for the transaction;
 	 */
 	@Override
-	public boolean withdraw(double amount) {  // withdraw the specified amount from the account
+	boolean withdraw(double amount) {  // withdraw the specified amount from the account
 		BigDecimal fee = new BigDecimal(Double.toString(3)); // set fee to 3.0
 		BigDecimal withdrawAmount = new BigDecimal(Double.toString(amount)); // set the amount to withdraw to the amount specified
 		BigDecimal minBalance = new BigDecimal(Double.toString(10)); // set the minimum balance to 10.0
@@ -102,7 +102,7 @@ public class SavingAccount extends Account {
 	 * @param amount The amount to deposit.
 	 */
 	@Override
-	public void deposit(double amount) { // deposit the specified amount to the account
+	void deposit(double amount) { // deposit the specified amount to the account
 		BigDecimal depositAmount = new BigDecimal(Double.toString(amount)); // set the deposit amount to the specified amount
 		BigDecimal zero = new BigDecimal(Double.toString(0)); // set zero
 		boolean accountIDInAccounts = false; // set the account ID as unknown
@@ -134,7 +134,7 @@ public class SavingAccount extends Account {
 	 * @param rate Interest rate.
 	 * @return The interest paid.
 	 */
-	public double addInterest(double rate) { // add interest at the specified rate (%)
+	double addInterest(double rate) { // add interest at the specified rate (%)
 		BigDecimal interestPercent = new BigDecimal(Double.toString(rate)); // set interestPercent to the percent value of the rate
 		BigDecimal oneHundred = new BigDecimal(Double.toString(100)); // set 100.0
 		BigDecimal zero = new BigDecimal(Double.toString(0)); // set zero
@@ -173,7 +173,7 @@ public class SavingAccount extends Account {
 	 * Generate account information
 	 * @return str Account information.
  	 */
-	public String toString() { // generate account information
+	String toString() { // generate account information
 		boolean accountIDInAccounts = false; // set the account ID as unknown
 		try { // try to find the account ID in the list of accounts
 			for(int i = 0; i < Bank.getListOfAccounts().size(); i++) { // for each account from the list of accounts

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * @author mpeev001
  */
-public class CurrentAccount extends Account {
+class CurrentAccount extends Account {
 	
 	// fields 
 	
@@ -26,7 +26,7 @@ public class CurrentAccount extends Account {
 	 * Get the number of checks used
 	 * @return The number of checks used.
 	 */
-	public int getNumberOfChecksUsed() { // get the number of checks used
+	int getNumberOfChecksUsed() { // get the number of checks used
 		return this.numberOfChecksUsed;
 	}
 
@@ -34,7 +34,7 @@ public class CurrentAccount extends Account {
 	 * Set the number of checks used
 	 * @param numberOfChecksUsed The number of checks used to set.
 	 */
-	public void setNumberOfChecksUsed(int numberOfChecksUsed) { // set the number of checks used
+	void setNumberOfChecksUsed(int numberOfChecksUsed) { // set the number of checks used
 		this.numberOfChecksUsed = numberOfChecksUsed;
 	}
 	
@@ -46,7 +46,7 @@ public class CurrentAccount extends Account {
 	 * @param balance The account balance.
 	 * @param checks The number of checks used.
 	 */
-	public CurrentAccount(String accountID, double balance, int checks) { // constructor to create a new current account with and ID accountID, the specified balance and the specified number of checks used
+	CurrentAccount(String accountID, double balance, int checks) { // constructor to create a new current account with and ID accountID, the specified balance and the specified number of checks used
 		super(accountID, balance); // call Account (super) constructor
 		ArrayList<Account> accounts = Bank.getListOfAccounts(); // make a copy of the bank's list of accounts
 		BigDecimal accountBalance = new BigDecimal(Double.toString(balance)); // convert balance to a BigDecimal
@@ -94,7 +94,7 @@ public class CurrentAccount extends Account {
 	 * @return <code>true</code> if withdrawal is successful; <code>false</code> if there are insufficient funds for the transaction;
 	 */
 	@Override
-	public boolean withdraw(double amount) { // withdraw the specified amount from the account
+	boolean withdraw(double amount) { // withdraw the specified amount from the account
 		BigDecimal fee = new BigDecimal(Double.toString(1)); // set fee to 1.0
 		BigDecimal withdrawAmount = new BigDecimal(Double.toString(amount)); // set withdraw amount to the amount specified
 		BigDecimal totalAmount = withdrawAmount.add(fee); // set the total amount to the amount specified plus the fee
@@ -143,7 +143,7 @@ public class CurrentAccount extends Account {
 	 * @param amount The amount to deposit.
 	 */
 	@Override
-	public void deposit(double amount) { // deposit the specified amount to the account
+	void deposit(double amount) { // deposit the specified amount to the account
 		BigDecimal fee = new BigDecimal(Double.toString(1)); // set the fee to 1.0
 		BigDecimal depositAmount = new BigDecimal(Double.toString(amount)); // set the deposit amount to the amount specified
 		BigDecimal minDeposit = new BigDecimal(Double.toString(1)); // set the minimum deposit to 1.0
@@ -176,7 +176,7 @@ public class CurrentAccount extends Account {
 	/**
 	 * Reset the number of checks used to 0
 	 */
-	public void resetChecksUsed() { // reset the number of checks used to 0
+	void resetChecksUsed() { // reset the number of checks used to 0
 		this.setNumberOfChecksUsed(0); // set the number of checks used to 0
 	}
 	
@@ -185,7 +185,7 @@ public class CurrentAccount extends Account {
 	 * @param amount The amount to withdraw.
 	 * @return <code>true</code> if withdrawal is successful; <code>false</code> if there are insufficient funds for the transaction;
 	 */
-	public boolean withdrawUsingCheck(double amount) { // withdraw the specified amount using check 
+	boolean withdrawUsingCheck(double amount) { // withdraw the specified amount using check 
 		BigDecimal fee = new BigDecimal(Double.toString(2)); // set the fee to 2.0
 		BigInteger freeChecks = new BigInteger(Integer.toString(3)); // set the number of free checks to 3
 		BigDecimal withdrawAmount = new BigDecimal(Double.toString(amount)); // set the withdraw amount to the specified amount
@@ -238,7 +238,7 @@ public class CurrentAccount extends Account {
 	 * Output account information, including account ID, balance and number of checks used
 	 * @return str Account information.
 	 */
-	public String toString() { // generate account information
+	String toString() { // generate account information
 		boolean accountIDInAccounts = false; // set the account ID as unknown
 		try { // try to find the account ID in the list of accounts
 			for(int i = 0; i < Bank.getListOfAccounts().size(); i++) { // for each account from the list of accounts

@@ -11,7 +11,7 @@ import java.util.ArrayList; // import ArrayList
 /**
  * @author mpeev001
  */
-public class Bank {
+class Bank {
 	
 	// fields
 	
@@ -25,7 +25,7 @@ public class Bank {
 	 * Get the name of the bank.
 	 * @return name Bank name.
 	 */
-	public String getName() { // get bank name
+	String getName() { // get bank name
 		String name = this.name; 
 		return name;
 	}
@@ -34,7 +34,7 @@ public class Bank {
 	 * Set the name of the bank.
 	 * @param name Bank name.
 	 */
-	public void setName(String name) { // set bank name
+	void setName(String name) { // set bank name
 		this.name = name; 
 	}
 
@@ -42,7 +42,7 @@ public class Bank {
 	 * Get a copy of the list of accounts. 
 	 * @return copy A copy of the list of accounts.
 	 */
-	public static ArrayList<Account> getListOfAccounts() { // get list of accounts
+	static ArrayList<Account> getListOfAccounts() { // get list of accounts
 		if(listOfAccounts == null) { // if the list of accounts is not initialised
 		   listOfAccounts = new ArrayList<>(); // initialise list of accounts
 		} 
@@ -55,7 +55,7 @@ public class Bank {
 	 * Set the list of accounts.
 	 * @param accounts The list of accounts.
 	 */
-	public static void setListOfAccounts(ArrayList<Account> accounts) { // set list of accounts 
+	static void setListOfAccounts(ArrayList<Account> accounts) { // set list of accounts 
 		ArrayList<Account> copy = new ArrayList<>(accounts.size()); // create an ArrayList of length equal to that of the list of account ArrayList 
 		copy.addAll(accounts); // add all accounts from the specified list of accounts to the copy
 		listOfAccounts = copy; // set the bank's list of accounts to the copy
@@ -65,7 +65,7 @@ public class Bank {
 	 * Set the savings interest rate.
 	 * @param rate The savings interest rate.
 	 */
-	public static void setSavingsInterestRate(double rate) { // set the bank's savings interest rate
+	static void setSavingsInterestRate(double rate) { // set the bank's savings interest rate
 		savingsInterestRate = rate;
 	}
 
@@ -73,7 +73,7 @@ public class Bank {
 	 * Get the savings interest rate.
 	 * @return savingsInterestRate The savings interest rate.
 	 */
-	public static double getSavingsInterestRate() { // get the bank's savings interest rate
+	static double getSavingsInterestRate() { // get the bank's savings interest rate
 		return savingsInterestRate;
 	}
 	
@@ -84,7 +84,7 @@ public class Bank {
 	 * @param name Bank name.
 	 * @param rate Savings interest rate.
 	 */
-	public Bank(String name, double rate) {
+	Bank(String name, double rate) {
 		this.setName(name);; // set the bank's name to the specified name
 		setSavingsInterestRate(rate); // set the bank's savings interest rate to the specified rate
 	}
@@ -97,7 +97,7 @@ public class Bank {
 	 * @param amount Amount.
 	 * @return <code>true</code> if the deposit is successful; <code>false</code> if the account ID is unknown;
 	 */
-	public boolean deposit(String accountID, double amount) { // deposit the specified amount into the account with the ID specified
+	boolean deposit(String accountID, double amount) { // deposit the specified amount into the account with the ID specified
 		BigDecimal minDeposit = new BigDecimal(Double.toString(1));
 		BigDecimal depositAmount = new BigDecimal(Double.toString(amount));
 		boolean accountIDInAccounts = false; // set account ID as unknown
@@ -136,7 +136,7 @@ public class Bank {
 	 * @param amount Amount.
 	 * @return <code>true</code> if the withdrawal is successful; <code>false</code> if the account ID is unknown;
 	 */
-	public boolean withdraw(String accountID, double amount) { // withdraw the specified amount from the account with the specified account ID
+	boolean withdraw(String accountID, double amount) { // withdraw the specified amount from the account with the specified account ID
 		boolean accountIDInAccounts = false; // set the account ID as unknown
 		try { // try to find the account ID in the list of accounts
 			for(int i = 0; i < getListOfAccounts().size(); i++) { // for each account from the list of accounts
@@ -164,7 +164,7 @@ public class Bank {
 	 * @param amount Amount.
 	 * @return <code>true</code> if the withdrawal and deposit are successful; <code>false</code> if the withdrawal is unsuccessful or one of the the account IDs is unknown;
 	 */
-	public boolean transfer(String fromAccountID, String toAccountID, double amount) { // transfer the specified amount from the account with ID fromAccountID to the account with ID toAccountID
+	boolean transfer(String fromAccountID, String toAccountID, double amount) { // transfer the specified amount from the account with ID fromAccountID to the account with ID toAccountID
 		int size = getListOfAccounts().size(); // get the number of accounts in the list of accounts
 		boolean fromAccountIDInAccounts = false; // set the Account ID to transfer the amount from as unknown
 		boolean toAccountIDInAccounts = false; // set the Account ID to transfer the amount to as unknown
